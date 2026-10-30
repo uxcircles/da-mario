@@ -12,7 +12,8 @@
 index.html            首頁（看戲前用餐規劃、劇院步行地圖、招牌菜、故事、酒窖、相簿、評論、交通與營業時間）
 menu.html             完整菜單與酒單（HTML 版，可搜尋、可只看素食、分類分頁籤）
 book.html             訂位頁（連到店家現有的 Dojo 訂位系統，並列出訂金與用餐規定）
-zh/                   繁體中文版（index / menu / book），右上角「中文／EN」切換
+zh/                   繁體中文版（index / menu / book）
+it/                   義大利文版（index / menu / book）；右上角可在 EN／IT／中文 之間切換，手機版在選單裡
 styles.css            全站樣式（顏色、字體都在最上面的 :root 變數）
 main.js               互動：手機選單、營業中狀態、看戲前規劃、相簿燈箱、菜單搜尋、捲動淡入
 assets/map.js         地圖樣式與標記（顏色都在檔案最上面的 C 物件）
@@ -39,7 +40,7 @@ python3 -m http.server 5173
 - **Vercel**：在資料夾裡執行 `npx vercel`，會讀取 `vercel.json`。
 - **GitHub Pages**：可以展示，但不支援轉址。
 
-各頁的 `canonical`、`og:url` 和 JSON-LD 目前寫的是 `https://uxcircles.github.io/da-mario/`，換網域時記得一起改。
+九個頁面的 `canonical`、`hreflang`、`og:url` 和 JSON-LD 目前寫的是 `https://uxcircles.github.io/da-mario/`，換網域時記得一起改。
 
 舊網址（`/menus.aspx`、`/location.aspx`、`/local.aspx`、`/reviews.aspx`、`/gallery.aspx`、`/default.aspx`）會 301 轉到新頁面。
 
@@ -50,7 +51,7 @@ python3 -m http.server 5173
 - **配色**：白桌布米白（`--linen`）、logo 的深藍炭色（`--ink`）、畫框金（`--gold`）、布幕紅／玫瑰紅（`--rosso`）、logo 的淺藍（`--sky`，只用在深色底）
 - **字體**：標題 Bodoni Moda（高對比襯線，劇院節目單感）、標籤與 logo 字 Tenor Sans（接近現有 logo 的字形）、內文 Jost
 - **中文字體**：Noto Serif TC／Noto Sans TC，只在中文頁載入
-- **看戲前規劃**：選劇院、開演時間和星期，算出最晚幾點入座（開演時間 − 步行時間 − 10 分鐘緩衝 − 2 小時用餐，取 15 分鐘整點；超過 17:30 就以 17:30 為準；早於開門時間就建議散場後再來）。地圖用 MapLibre 向量地圖，街道資料來自 OpenFreeMap（OpenStreetMap，免費、不需金鑰），每一層顏色都照網站配色自訂：米白地面、淺亞麻色建築、白色街道、金色 5／10 分鐘步行圈、紅色路線，Thames 河用 logo 的淺藍。劇院、地鐵站和 Da Mario 的座標都取自 OpenStreetMap。點地圖上的劇院也會更新規劃結果。手機單指會捲動頁面，兩指才移動地圖；手機上只標示目前選的劇院，其他看下方列表。
+- **看戲前規劃**：選劇院、開演時間和星期，算出最晚幾點入座（開演時間 − 步行時間 − 10 分鐘緩衝 − 2 小時用餐，取 15 分鐘整點；超過 17:30 就以 17:30 為準；早於開門時間就建議散場後再來）。地圖用 MapLibre 向量地圖，街道資料來自 OpenFreeMap（OpenStreetMap，免費、不需金鑰），每一層顏色都照網站配色自訂：米白地面、淺亞麻色建築、白色街道、金色 5／10 分鐘步行圈、紅色路線，Thames 河用 logo 的淺藍。劇院、地鐵站和 Da Mario 的座標都取自 OpenStreetMap。劇院名稱標籤會自動找不重疊的位置（右、左、上、下），真的放不下就只在滑過或選取時顯示。點地圖上的劇院也會更新規劃結果。手機單指會捲動頁面，兩指才移動地圖；手機上只標示目前選的劇院，其他看下方列表。
 
 ## 現有網站檢視結果（2026-10-30）
 
@@ -82,14 +83,15 @@ python3 -m http.server 5173
 - [ ] **步行時間**：以直線距離 × 1.3、每分鐘 80 公尺估算；地圖上的紅線是直線方向，不是實際步行路線
 - [ ] **訂位**：沿用店家現有的 Dojo 訂位連結。Dojo 頁面嵌在 iframe 裡會載入失敗，所以改成按鈕開新分頁
 - [ ] 中文版翻譯請母語人士再順一次（中文菜單每道菜都保留義大利原名與英文說明，方便點餐時對照）
+- [ ] 義大利文版請店家（或義大利籍員工）校對，尤其是菜單描述與訂位規定；劇院和地鐵站名保留英文原名
 
 ## 日常更新
 
 | 要改什麼 | 改哪裡 |
 |---|---|
-| 菜色／價格 | `menu.html` **和** `zh/menu.html` 的各 `.menu-section`；首頁「La carta」的四道菜與分類價格也要一起改 |
-| 營業時間 | `index.html` **和** `zh/index.html` 的 Visit 區塊與 JSON-LD，還有 `main.js` 的 `hoursFor()` |
-| 劇院 | 首頁 `#theatre` 區塊的下拉選單、列表和 `#map-data` JSON（中英文頁面都要改） |
-| 其他文字 | 中英文頁面是各自獨立的 HTML，改一邊記得也改另一邊 |
+| 菜色／價格 | `menu.html`、`it/menu.html` **和** `zh/menu.html` 的各 `.menu-section`；首頁「La carta」的四道菜與分類價格也要一起改 |
+| 營業時間 | `index.html`、`it/index.html` **和** `zh/index.html` 的 Visit 區塊與 JSON-LD，還有 `main.js` 的 `hoursFor()` |
+| 劇院 | 首頁 `#theatre` 區塊的下拉選單、列表和 `#map-data` JSON（三種語言的頁面都要改） |
+| 其他文字 | 英文、義大利文、中文頁面是各自獨立的 HTML，改一邊記得三個都要改 |
 | 照片 | 放進 `assets/img/`，建議做成 WebP |
-| 改了 CSS／JS | 把六個頁面 `styles.css?v=3`、`main.js?v=2` 的版本號 +1，避免訪客看到快取的舊版 |
+| 改了 CSS／JS | 把六個頁面 `styles.css?v=5`、`main.js?v=4` 的版本號 +1，避免訪客看到快取的舊版 |

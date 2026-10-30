@@ -156,7 +156,7 @@
 
     const markers = {};
     data.theatres.forEach((t) => {
-      const node = el('button', `map-theatre${t.id === 'roh' ? ' label-top' : ''}`, `<span class="dot"></span><span class="theatre-name">${t.name}</span>`);
+      const node = el('button', 'map-theatre', `<span class="dot"></span><span class="theatre-name">${t.name}</span>`);
       node.type = 'button';
       node.setAttribute('aria-label', `${t.name}, ${t.walk} ${data.min}`);
       node.addEventListener('click', () => onPick && onPick(t.id));
@@ -172,7 +172,7 @@
     data.tubes.forEach((t) => bounds.extend([t.lng, t.lat]));
     // leave room on the right for the labels of the eastern theatres
     const narrow = container.clientWidth < 560;
-    map.fitBounds(bounds, { padding: narrow ? { top: 50, bottom: 40, left: 30, right: 40 } : { top: 60, bottom: 40, left: 40, right: 190 }, duration: 0 });
+    map.fitBounds(bounds, { padding: narrow ? { top: 50, bottom: 40, left: 30, right: 40 } : { top: 60, bottom: 40, left: 40, right: 150 }, duration: 0 });
 
     let current = null;
     const draw = () => {
@@ -182,17 +182,58 @@
     };
     map.on('load', draw);
 
+    /* Label placement: try right, left, above, below; if every spot collides,
+       the label only shows on hover or when that theatre is selected. */
+    const SPOTS = ['', 'label-left', 'label-top', 'label-bottom'];
+    const overlaps = (a, b) => a.x1 < b.x2 && a.x2 > b.x1 && a.y1 < b.y2 && a.y2 > b.y1;
+    const placeLabels = () => {
+      const box = container.getBoundingClientRect();
+      const rel = (r, pad = 2) => ({ x1: r.left - box.left - pad, y1: r.top - box.top - pad, x2: r.right - box.left + pad, y2: r.bottom - box.top + pad });
+      const taken = [{ x1: 0, y1: 0, x2: 44, y2: 84 }]; // zoom buttons
+      $$('.map-home .pin, .map-home .pin-label, .map-tube .roundel, .map-tube .tube-name, .map-theatre .dot', container).forEach((n) => {
+        const r = n.getBoundingClientRect(); if (r.width) taken.push(rel(r));
+      });
+      const W = container.clientWidth, H = container.clientHeight - 24; // keep clear of the attribution
+      const order = Object.keys(markers).sort((a, b) => (b === current) - (a === current));
+      order.forEach((id) => {
+        const node = markers[id].getElement();
+        const label = node.querySelector('.theatre-name');
+        SPOTS.concat('label-hidden').forEach((c) => c && node.classList.remove(c));
+        const p = map.project(markers[id].getLngLat());
+        const w = label.offsetWidth, h = label.offsetHeight;
+        const rects = {
+          '': { x1: p.x + 12, y1: p.y - h / 2, x2: p.x + 12 + w, y2: p.y + h / 2 },
+          'label-left': { x1: p.x - 12 - w, y1: p.y - h / 2, x2: p.x - 12, y2: p.y + h / 2 },
+          'label-top': { x1: p.x - w / 2, y1: p.y - 12 - h, x2: p.x + w / 2, y2: p.y - 12 },
+          'label-bottom': { x1: p.x - w / 2, y1: p.y + 12, x2: p.x + w / 2, y2: p.y + 12 + h },
+        };
+        const fits = (r) => r.x1 >= 4 && r.y1 >= 4 && r.x2 <= W - 4 && r.y2 <= H && !taken.some((t) => overlaps(r, t));
+        const spot = SPOTS.find((c) => fits(rects[c]));
+        if (spot === undefined) {
+          // the selected theatre always gets a label: pick the spot that stays inside the map
+          const inside = SPOTS.find((c) => rects[c].x1 >= 4 && rects[c].x2 <= W - 4) ?? '';
+          if (id === current) { if (inside) node.classList.add(inside); taken.push(rects[inside]); }
+          else node.classList.add('label-hidden');
+          return;
+        }
+        if (spot) node.classList.add(spot);
+        taken.push(rects[spot]);
+      });
+    };
+    const $$ = (s, r) => [...r.querySelectorAll(s)];
+    map.on('load', placeLabels);
+    map.on('moveend', placeLabels);
+
     return {
       select(id) {
         current = id;
         Object.entries(markers).forEach(([k, m]) => {
           const node = m.getElement();
           node.classList.toggle('is-active', k === id);
-          // labels near the right edge go on the left of the dot instead
-          node.classList.toggle('label-left', map.project(m.getLngLat()).x > container.clientWidth * .62 && !node.classList.contains('label-top'));
           node.setAttribute('aria-pressed', k === id);
         });
         draw();
+        placeLabels();
       },
     };
   };
