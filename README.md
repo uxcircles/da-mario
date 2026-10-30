@@ -94,4 +94,4 @@ python3 -m http.server 5173
 | 劇院 | 首頁 `#theatre` 區塊的下拉選單、列表和 `#map-data` JSON（三種語言的頁面都要改） |
 | 其他文字 | 英文、義大利文、中文頁面是各自獨立的 HTML，改一邊記得三個都要改 |
 | 照片 | 放進 `assets/img/`，建議做成 WebP |
-| 改了 CSS／JS | 把六個頁面 `styles.css?v=8`、`main.js?v=5` 的版本號 +1，避免訪客看到快取的舊版 |
+| 改了 CSS／JS | 把六個頁面 `styles.css?v=10`、`main.js?v=6` 的版本號 +1，避免訪客看到快取的舊版 |

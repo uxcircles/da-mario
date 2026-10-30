@@ -133,13 +133,14 @@ button { font: inherit; color: inherit; }
 
 /* Header ------------------------------------------------------------------ */
 .site-header { position: sticky; top: 0; z-index: 50; }
-.header-bar { background: rgba(247, 242, 232, .94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+/* solid, no backdrop-filter: a filter here would become the containing block of the fixed mobile nav and collapse it */
+.header-bar { background: var(--linen); border-bottom: 1px solid transparent; transition: border-color .3s; }
 .is-scrolled .header-bar { border-bottom-color: var(--line); }
 /* Home page: the header starts as the stage pelmet (same red as the valance and curtains), turns to linen on scroll */
 .has-stage .header-bar { transition: background-color .4s var(--ease), border-color .3s; }
 .has-stage .header-bar :is(.brand-name, .brand-sub, .nav-list a, .lang-switch, .call-link, .btn) { transition: color .4s var(--ease), background-color .4s var(--ease); }
 .has-stage .burger span { transition: transform .3s var(--ease), top .3s var(--ease), background-color .4s var(--ease); }
-.has-stage:not(.is-scrolled):not(.nav-open) .header-bar { background: #7d1f1a; -webkit-backdrop-filter: none; backdrop-filter: none; }
+.has-stage:not(.is-scrolled):not(.nav-open) .header-bar { background: #7d1f1a; }
 .has-stage:not(.is-scrolled):not(.nav-open) .header-bar :is(.brand-name, .nav-list a, .call-link) { color: #fff8ee; }
 .has-stage:not(.is-scrolled):not(.nav-open) .header-bar .brand-name b { color: var(--gold-bright); }
 .has-stage:not(.is-scrolled):not(.nav-open) .header-bar :is(.brand-sub, .lang-switch, .lang-btn) { color: rgba(255, 248, 238, .72); }
@@ -205,7 +206,7 @@ button { font: inherit; color: inherit; }
   .nav-extra p { margin: 0; color: var(--ink-soft); }
   .nav-extra .btn { width: 100%; }
   .nav-lang { font-family: var(--f-label); letter-spacing: .08em; }
-  body.nav-open { overflow: hidden; }
+  html:has(body.nav-open) { overflow: hidden; } /* lock on html: body is overflow-x: clip, so hiding its overflow would make it a scroll container and unstick the header */
 }
 
 /* Fixed bottom bar on phones -------------------------------------------- */

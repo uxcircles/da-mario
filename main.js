@@ -162,9 +162,9 @@
     const imgEl = $('[data-lb-img]', lb), cap = $('[data-lb-cap]', lb);
     let i = 0, opener = null;
     const show = (n) => { i = (n + items.length) % items.length; imgEl.src = items[i].src; imgEl.alt = items[i].alt; cap.textContent = items[i].alt; };
-    const close = () => { lb.hidden = true; document.body.style.overflow = ''; opener?.focus(); };
+    const close = () => { lb.hidden = true; document.documentElement.style.overflow = ''; opener?.focus(); };
     $$('[data-lightbox]').forEach((b) => b.addEventListener('click', () => {
-      opener = b; show(+b.dataset.lightbox); lb.hidden = false; document.body.style.overflow = 'hidden'; $('[data-lb-close]', lb).focus();
+      opener = b; show(+b.dataset.lightbox); lb.hidden = false; document.documentElement.style.overflow = 'hidden'; $('[data-lb-close]', lb).focus();
     }));
     $('[data-lb-close]', lb).addEventListener('click', close);
     $('[data-lb-prev]', lb).addEventListener('click', () => show(i - 1));
