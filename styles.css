@@ -119,13 +119,11 @@ button { font: inherit; color: inherit; }
 .concept-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 34px; }
 .concept-bar p { display: flex; align-items: center; gap: 10px; margin: 0; }
 .concept-tag { padding: 2px 8px; border: 1px solid rgba(207, 200, 186, .4); border-radius: 99px; font-size: .6875rem; letter-spacing: .08em; text-transform: uppercase; }
-.concept-short { display: none; }
 .concept-bar a { display: inline-flex; align-items: center; gap: 4px; text-decoration: none; white-space: nowrap; }
 .concept-bar a:hover strong { text-decoration: underline; }
 .concept-bar .concept-long a { display: inline; text-decoration: underline; text-underline-offset: 2px; text-decoration-color: rgba(207, 200, 186, .5); }
 @media (max-width: 640px) {
   .concept-long { display: none; }
-  .concept-short { display: inline; }
 }
 
 /* Header ------------------------------------------------------------------ */
