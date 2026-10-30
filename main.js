@@ -74,9 +74,8 @@
     const daySel = form.elements.day;
     daySel.value = String(now.day === 0 ? 1 : now.day);
     const out = { kicker: $('[data-plan-kicker]'), time: $('[data-plan-time]'), note: $('[data-plan-note]'), bar: $('[data-timeline]') };
-    const map = $('[data-map]');
-    const route = map && $('[data-route]', map);
-    const home = map && $('.m-home .dot', map);
+    const mapEl = $('[data-map]');
+    let map = null; // set once MapLibre has loaded
     const BUFFER = 10, DINE = 120, LAST = toMin('17:30');
 
     const update = () => {
@@ -109,18 +108,39 @@
       if (day === 3) note += i18n.sinatra;
       out.note.textContent = note;
 
-      if (map) {
-        $$('.m-theatre', map).forEach((g) => g.classList.toggle('is-active', g.dataset.theatre === opt.value));
-        const g = $(`.m-theatre[data-theatre="${opt.value}"]`, map);
-        if (g && route && home) {
-          const hx = +home.getAttribute('cx'), hy = +home.getAttribute('cy');
-          route.setAttribute('d', `M${hx} ${hy} L${g.dataset.x} ${g.dataset.y}`);
-        }
-      }
+      map?.select(opt.value);
     };
     form.addEventListener('change', update);
-    $$('.m-theatre').forEach((g) => g.addEventListener('click', () => { form.elements.theatre.value = g.dataset.theatre; update(); }));
     update();
+
+    /* Map: MapLibre + OpenFreeMap, loaded only when it scrolls near the viewport */
+    if (mapEl) {
+      const addScript = (src) => new Promise((resolve, reject) => {
+        const s = document.createElement('script');
+        s.src = src; s.onload = resolve; s.onerror = reject;
+        document.head.append(s);
+      });
+      const load = () => {
+        const css = document.createElement('link');
+        css.rel = 'stylesheet';
+        css.href = `${mapEl.dataset.lib}maplibre-gl.css`;
+        document.head.append(css);
+        return addScript(`${mapEl.dataset.lib}maplibre-gl.js`)
+          .then(() => addScript(mapEl.dataset.src))
+          .then(() => {
+            const data = JSON.parse($('#map-data').textContent);
+            map = window.daMarioMap(mapEl, data, (id) => { form.elements.theatre.value = id; update(); });
+            map.select(form.elements.theatre.value);
+          })
+          .catch(() => mapEl.classList.add('is-failed'));
+      };
+      if ('IntersectionObserver' in window) {
+        const mio = new IntersectionObserver((entries) => {
+          if (entries.some((en) => en.isIntersecting)) { mio.disconnect(); load(); }
+        }, { rootMargin: '400px 0px' });
+        mio.observe(mapEl);
+      } else load();
+    }
   }
 
   /* Lightbox ------------------------------------------------------------- */

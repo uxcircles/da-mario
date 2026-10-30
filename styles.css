@@ -306,27 +306,41 @@ button { font: inherit; color: inherit; }
 .planner-rules li { display: grid; grid-template-columns: 22px 1fr; gap: 8px; }
 .planner-rules li::before { content: "—"; color: var(--gold); }
 
-/* Theatreland map (SVG) */
+/* Theatreland map (MapLibre, assets/map.js) */
 .map-card { position: relative; background: var(--paper); border: 1px solid var(--line); }
-.map-card svg { display: block; width: 100%; height: auto; }
-.map-card .m-grid { stroke: rgba(26, 34, 41, .06); stroke-width: 1; }
-.map-card .m-street { fill: none; stroke: #e4dccd; stroke-width: 9; stroke-linecap: round; stroke-linejoin: round; }
-.map-card .m-street-name { font: 400 9.5px var(--f-label); letter-spacing: .14em; text-transform: uppercase; fill: #9c9282; }
-.map-card .m-ring { fill: none; stroke: rgba(154, 118, 56, .35); stroke-dasharray: 2 5; }
-.map-card .m-ring-label { font: 400 9px var(--f-label); letter-spacing: .12em; fill: var(--gold); }
-.map-card .m-route { fill: none; stroke: var(--rosso); stroke-width: 2.2; stroke-dasharray: 6 6; stroke-linecap: round; animation: march 1s linear infinite; }
-@keyframes march { to { stroke-dashoffset: -12; } }
-@media (prefers-reduced-motion: reduce) { .map-card .m-route { animation: none; } }
-.map-card .m-theatre { cursor: pointer; }
-.map-card .m-theatre circle { fill: var(--paper); stroke: var(--ink); stroke-width: 1.6; transition: fill .2s, r .2s; }
-.map-card .m-theatre text { font: 500 12px var(--f-body); fill: var(--ink); paint-order: stroke; stroke: var(--paper); stroke-width: 4px; stroke-linejoin: round; }
-.map-card .m-theatre:hover circle, .map-card .m-theatre.is-active circle { fill: var(--rosso); stroke: var(--rosso); }
-.map-card .m-theatre.is-active text { fill: var(--rosso); font-weight: 600; }
-.map-card .m-tube rect { fill: var(--paper); stroke: #2b5aa6; stroke-width: 1.6; }
-.map-card .m-tube text { font: 400 10.5px var(--f-body); fill: #2b5aa6; paint-order: stroke; stroke: var(--paper); stroke-width: 4px; }
-.map-card .m-home circle.dot { fill: var(--ink); }
-.map-card .m-home circle.halo { fill: rgba(143, 37, 32, .12); }
-.map-card .m-home text { font: 400 12px var(--f-label); letter-spacing: .16em; fill: var(--ink); paint-order: stroke; stroke: var(--paper); stroke-width: 5px; }
+/* .map-card prefix: maplibre-gl.css loads later and sets the container to position: relative */
+.map-card .map-canvas { position: relative; height: clamp(380px, 46vw, 560px); background: var(--linen-2); font: inherit; }
+.map-canvas.is-failed::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent 0 12px, rgba(26, 34, 41, .04) 12px 13px); }
+.map-canvas .maplibregl-ctrl-attrib { font-size: 10px; }
+.map-canvas .maplibregl-ctrl-group { border-radius: 2px; box-shadow: 0 6px 16px -10px rgba(26, 34, 41, .5); }
+.map-canvas .maplibregl-cooperative-gesture-screen { font-family: var(--f-body); background: rgba(26, 34, 41, .55); }
+.map-home { display: grid; justify-items: center; cursor: default; }
+.map-home .pin {
+  display: grid; place-items: center; width: 44px; height: 44px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg);
+  background: var(--ink); border: 2px solid var(--gold-bright); box-shadow: 0 10px 22px -8px rgba(26, 34, 41, .7);
+}
+.map-home .pin i { transform: rotate(45deg); font: italic 500 1.35rem/1 var(--f-display); color: #fff8ee; }
+.map-home .pin-label {
+  position: absolute; left: 50px; top: 8px; padding: 5px 12px; white-space: nowrap;
+  background: var(--ink); color: #fff8ee; font: 400 .72rem/1.3 var(--f-label); letter-spacing: .18em; text-transform: uppercase;
+  box-shadow: 0 8px 18px -10px rgba(26, 34, 41, .7);
+}
+.map-theatre { position: relative; width: 16px; height: 16px; padding: 0; border: 0; background: none; cursor: pointer; }
+.map-theatre .dot { display: block; width: 14px; height: 14px; margin: 1px; border-radius: 50%; background: var(--paper); border: 2px solid var(--ink); transition: background .2s, border-color .2s, transform .2s var(--ease); }
+.map-theatre .theatre-name {
+  position: absolute; left: 20px; top: 50%; transform: translateY(-50%); padding: 2px 7px; white-space: nowrap;
+  background: rgba(255, 253, 248, .92); color: var(--ink); font: 500 .76rem/1.4 var(--f-body); transition: background .2s, color .2s;
+}
+.map-theatre:hover .dot, .map-theatre.is-active .dot { background: var(--rosso); border-color: var(--rosso); transform: scale(1.2); }
+.map-theatre.is-active { z-index: 2; }
+.map-theatre.label-left .theatre-name { left: auto; right: 20px; }
+.map-theatre.label-top .theatre-name { left: 50%; top: -24px; transform: translateX(-50%); }
+/* phones: only the selected theatre is labelled; the list under the map has the rest */
+@media (max-width: 600px) { .map-theatre:not(.is-active) .theatre-name { display: none; } .map-home .pin-label { display: none; } }
+.map-theatre.is-active .theatre-name { background: var(--rosso); color: #fff8ee; }
+.map-tube { position: relative; }
+.map-tube .roundel { display: block; box-sizing: border-box; width: 14px; height: 14px; border-radius: 50%; border: 3px solid #dc241f; background: #fff; box-shadow: 0 0 0 1.5px #fff; }
+.map-tube .tube-name { position: absolute; left: 50%; top: 18px; transform: translateX(-50%); white-space: nowrap; color: #2b5aa6; font: 500 .7rem/1.3 var(--f-body); text-shadow: 0 0 3px #f7f2e8, 0 0 3px #f7f2e8, 0 0 3px #f7f2e8; }
 .map-foot { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px 20px; padding: 12px 16px; border-top: 1px solid var(--line); font-size: .85rem; color: var(--ink-soft); }
 .map-foot a { color: var(--ink); }
 .theatre-list { display: grid; grid-template-columns: 1fr 1fr; gap: 0 28px; margin-top: 22px; font-size: .95rem; }

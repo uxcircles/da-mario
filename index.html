@@ -28,7 +28,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..500&family=Jost:wght@400;500&family=Tenor+Sans&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="assets/img/dining-rose.webp" fetchpriority="high">
-  <link rel="stylesheet" href="styles.css?v=2">
+  <link rel="stylesheet" href="styles.css?v=3">
   <script>document.documentElement.classList.replace('no-js','js')</script>
   <script type="application/ld+json">
   {
@@ -176,7 +176,7 @@
           <h2 class="title-l" id="theatre-title">Dinner first. <em>Then the curtain.</em></h2>
           <p class="lede" style="margin-top:18px">Ten West End stages are within an eleven-minute walk. Tell us your theatre and curtain time and we'll tell you when to arrive.</p>
           <form class="planner-form" data-planner onsubmit="return false">
-            <div class="field full"><label for="pl-theatre">Theatre</label><select class="select" id="pl-theatre" name="theatre"><option value="shaftesbury" data-walk="2">Shaftesbury Theatre · 2 min</option><option value="cambridge" data-walk="3">Cambridge Theatre · 3 min</option><option value="phoenix" data-walk="5">Phoenix Theatre · 5 min</option><option value="palace" data-walk="7">Palace Theatre · 7 min</option><option value="roh" data-walk="6" selected>Royal Opera House · 6 min</option><option value="drurylane" data-walk="8">Theatre Royal Drury Lane · 8 min</option><option value="novello" data-walk="9">Novello Theatre · 9 min</option><option value="lyceum" data-walk="10">Lyceum Theatre · 10 min</option><option value="savoy" data-walk="11">Savoy Theatre · 11 min</option><option value="coliseum" data-walk="10">London Coliseum (ENO) · 10 min</option></select></div>
+            <div class="field full"><label for="pl-theatre">Theatre</label><select class="select" id="pl-theatre" name="theatre"><option value="shaftesbury" data-walk="2">Shaftesbury Theatre · 2 min</option><option value="cambridge" data-walk="3">Cambridge Theatre · 3 min</option><option value="phoenix" data-walk="5">Phoenix Theatre · 5 min</option><option value="palace" data-walk="6">Palace Theatre · 6 min</option><option value="roh" data-walk="6" selected>Royal Opera House · 6 min</option><option value="drurylane" data-walk="8">Theatre Royal Drury Lane · 8 min</option><option value="novello" data-walk="9">Novello Theatre · 9 min</option><option value="lyceum" data-walk="10">Lyceum Theatre · 10 min</option><option value="savoy" data-walk="11">Savoy Theatre · 11 min</option><option value="coliseum" data-walk="10">London Coliseum (ENO) · 10 min</option></select></div>
             <div class="field"><label for="pl-time">Curtain up</label><select class="select" id="pl-time" name="time"><option>14:30</option><option>15:00</option><option>19:00</option><option>19:15</option><option selected>19:30</option><option>19:45</option><option>20:00</option></select></div>
             <div class="field"><label for="pl-day">Day</label><select class="select" id="pl-day" name="day"><option value="1">Monday</option><option value="2">Tuesday</option><option value="3">Wednesday</option><option value="4">Thursday</option><option value="5">Friday</option><option value="6">Saturday</option></select></div>
           </form>
@@ -195,49 +195,12 @@
         </div>
         <div>
           <div class="map-card">
-            <svg viewBox="0 0 640 509" role="img" aria-labelledby="map-title map-desc" data-map>
-<title id="map-title">Walking map of Theatreland around Da Mario</title>
-<desc id="map-desc">Da Mario is on Endell Street. The nearest theatres are two to eleven minutes away on foot; see the list below the map.</desc>
-<g class="m-grid"><path d="M40 0V509"/><path d="M80 0V509"/><path d="M120 0V509"/><path d="M160 0V509"/><path d="M200 0V509"/><path d="M240 0V509"/><path d="M280 0V509"/><path d="M320 0V509"/><path d="M360 0V509"/><path d="M400 0V509"/><path d="M440 0V509"/><path d="M480 0V509"/><path d="M520 0V509"/><path d="M560 0V509"/><path d="M600 0V509"/><path d="M0 40H640"/><path d="M0 80H640"/><path d="M0 120H640"/><path d="M0 160H640"/><path d="M0 200H640"/><path d="M0 240H640"/><path d="M0 280H640"/><path d="M0 320H640"/><path d="M0 360H640"/><path d="M0 400H640"/><path d="M0 440H640"/><path d="M0 480H640"/></g>
-<path class="m-street" d="M112.5 79.1 L225.1 96.1 L351.6 56.5 L464.2 22.6"/>
-<path class="m-street" d="M225.1 96.1 L154.7 180.8 L94.9 254.3 L14.1 350.3"/>
-<path class="m-street" d="M45.7 96.1 L94.9 254.3 L140.7 452.0"/>
-<path class="m-street" d="M225.1 96.1 L228.6 169.5 L267.3 243.0"/>
-<path class="m-street" d="M161.8 367.3 L253.2 288.2 L302.4 243.0 L383.3 192.1"/>
-<path class="m-street" d="M316.5 45.2 L383.3 192.1 L464.2 293.8"/>
-<path class="m-street" d="M218.0 553.7 L305.9 469.0 L464.2 395.5 L527.5 367.3"/>
-<path class="m-street" d="M302.4 243.0 L372.7 327.7 L411.4 395.5"/>
-<path class="m-street" d="M161.8 367.3 L182.9 469.0 L189.9 536.8"/>
-<text class="m-street-name" text-anchor="middle" transform="translate(168.8 87.6) rotate(8.6)" dy="3.5">High Holborn</text>
-<text class="m-street-name" text-anchor="middle" transform="translate(189.9 138.4) rotate(-50.3)" dy="3.5">Shaftesbury Ave</text>
-<text class="m-street-name" text-anchor="middle" transform="translate(70.3 175.2) rotate(72.7)" dy="3.5">Charing Cross Rd</text>
-<text class="m-street-name" text-anchor="middle" transform="translate(246.2 169.6) rotate(74.0)" dy="3.5">Endell St</text>
-<text class="m-street-name" text-anchor="middle" transform="translate(207.5 327.8) rotate(-40.9)" dy="3.5">Long Acre</text>
-<text class="m-street-name" text-anchor="middle" transform="translate(349.9 118.7) rotate(65.5)" dy="3.5">Drury Lane</text>
-<text class="m-street-name" text-anchor="middle" transform="translate(385.0 432.2) rotate(-24.9)" dy="3.5">Strand</text>
-<circle class="m-ring" cx="228.6" cy="166.1" r="156.2"/><text class="m-ring-label" x="343.5" y="51.2">5 MIN</text>
-<circle class="m-ring" cx="228.6" cy="166.1" r="312.3"/><text class="m-ring-label" x="454.4" y="-59.7">10 MIN</text>
-<path class="m-route" d="M228.6 166.1" data-route/>
-<g class="m-tube"><rect x="271.8" y="282.2" width="12" height="12" rx="6"/><text x="277.8" y="308.2" text-anchor="middle">Covent Garden</text></g>
-<g class="m-tube"><rect x="39.7" y="90.1" width="12" height="12" rx="6"/><text x="45.7" y="116.1" text-anchor="middle">Tottenham Court Road</text></g>
-<g class="m-tube"><rect x="423.0" y="27.9" width="12" height="12" rx="6"/><text x="429.0" y="53.9" text-anchor="middle">Holborn</text></g>
-<g class="m-theatre" data-theatre="shaftesbury" data-x="235.6" data-y="107.4"><circle cx="235.6" cy="107.4" r="6"/><text x="245.6" y="99.4" text-anchor="start">Shaftesbury Theatre</text></g>
-<g class="m-theatre" data-theatre="cambridge" data-x="200.4" data-y="243.0"><circle cx="200.4" cy="243.0" r="6"/><text x="190.4" y="247.0" text-anchor="end">Cambridge Theatre</text></g>
-<g class="m-theatre" data-theatre="phoenix" data-x="94.9" data-y="175.2"><circle cx="94.9" cy="175.2" r="6"/><text x="84.9" y="179.2" text-anchor="end">Phoenix Theatre</text></g>
-<g class="m-theatre" data-theatre="palace" data-x="87.9" data-y="293.8"><circle cx="87.9" cy="293.8" r="6"/><text x="77.9" y="297.8" text-anchor="end">Palace Theatre</text></g>
-<g class="m-theatre" data-theatre="roh" data-x="351.6" data-y="288.2"><circle cx="351.6" cy="288.2" r="6"/><text x="351.6" y="275.2" text-anchor="middle">Royal Opera House</text></g>
-<g class="m-theatre" data-theatre="drurylane" data-x="418.5" data-y="288.2"><circle cx="418.5" cy="288.2" r="6"/><text x="428.5" y="280.2" text-anchor="start">Theatre Royal Drury Lane</text></g>
-<g class="m-theatre" data-theatre="novello" data-x="467.7" data-y="299.5"><circle cx="467.7" cy="299.5" r="6"/><text x="477.7" y="311.5" text-anchor="start">Novello Theatre</text></g>
-<g class="m-theatre" data-theatre="lyceum" data-x="432.5" data-y="367.3"><circle cx="432.5" cy="367.3" r="6"/><text x="442.5" y="371.3" text-anchor="start">Lyceum Theatre</text></g>
-<g class="m-theatre" data-theatre="savoy" data-x="407.9" data-y="435.1"><circle cx="407.9" cy="435.1" r="6"/><text x="417.9" y="447.1" text-anchor="start">Savoy Theatre</text></g>
-<g class="m-theatre" data-theatre="coliseum" data-x="200.4" data-y="469.0"><circle cx="200.4" cy="469.0" r="6"/><text x="210.4" y="473.0" text-anchor="start">London Coliseum (ENO)</text></g>
-<g class="m-home"><circle class="halo" cx="228.6" cy="166.1" r="18"/><circle class="dot" cx="228.6" cy="166.1" r="7"/><text x="244.6" y="152.1">DA MARIO</text></g>
-<g transform="translate(600 40)" fill="#1a2229"><path d="M0 -16 L6 6 L0 2 L-6 6Z"/><text y="22" text-anchor="middle" style="font:400 10px var(--f-label)">N</text></g>
-<g transform="translate(20 485)"><path d="M0 0H101.5" stroke="#1a2229" stroke-width="1.5"/><path d="M0 -4V4M101.5 -4V4" stroke="#1a2229" stroke-width="1.5"/><text x="50.8" y="-8" text-anchor="middle" style="font:400 10px var(--f-label);fill:#5a5f5f">200 m</text></g>
-</svg>
+            <!-- MapLibre is bundled in assets/vendor; the map (assets/map.js) only loads when it scrolls near the viewport -->
+            <div class="map-canvas" data-map data-lib="assets/vendor/maplibre/" data-src="assets/map.js" role="region" aria-label="Map of the theatres around Da Mario. The same walking times are listed below."></div>
+            <script type="application/json" id="map-data">{"home": {"name": "Da Mario", "lng": -0.1257071, "lat": 51.515038}, "theatres": [{"id": "shaftesbury", "name": "Shaftesbury Theatre", "lng": -0.1258584, "lat": 51.5161372, "walk": 2}, {"id": "cambridge", "name": "Cambridge Theatre", "lng": -0.1265296, "lat": 51.5136329, "walk": 3}, {"id": "phoenix", "name": "Phoenix Theatre", "lng": -0.1293782, "lat": 51.5145139, "walk": 5}, {"id": "palace", "name": "Palace Theatre", "lng": -0.129835, "lat": 51.5131032, "walk": 6}, {"id": "roh", "name": "Royal Opera House", "lng": -0.1225639, "lat": 51.5128732, "walk": 6}, {"id": "drurylane", "name": "Theatre Royal Drury Lane", "lng": -0.1202295, "lat": 51.5129942, "walk": 8}, {"id": "novello", "name": "Novello Theatre", "lng": -0.1194719, "lat": 51.5124292, "walk": 9}, {"id": "lyceum", "name": "Lyceum Theatre", "lng": -0.1200585, "lat": 51.5114809, "walk": 10}, {"id": "savoy", "name": "Savoy Theatre", "lng": -0.1209334, "lat": 51.5101801, "walk": 11}, {"id": "coliseum", "name": "London Coliseum (ENO)", "lng": -0.1262319, "lat": 51.5100038, "walk": 10}], "tubes": [{"name": "Covent Garden", "lng": -0.1241901, "lat": 51.5129611}, {"name": "Tottenham Court Road", "lng": -0.1314219, "lat": 51.5176512}, {"name": "Holborn", "lng": -0.1202791, "lat": 51.517111}], "rings": [5, 10], "min": "min", "metresPerMin": 61.5}</script>
             <div class="map-foot"><span>Walking times are approximate.</span><a href="https://www.google.co.uk/maps/place/Da+Mario+Covent+Garden/@51.5150558,-0.1268186,18z/data=!3m1!4b1!4m5!3m4!1s0x48761b332d1f8807:0xe8155715f0aac02c!8m2!3d51.5150558!4d-0.1256986" target="_blank" rel="noopener">Open in Google Maps</a></div>
           </div>
-          <ul class="theatre-list"><li><span>Shaftesbury Theatre</span><b>2 min</b></li><li><span>Cambridge Theatre</span><b>3 min</b></li><li><span>Phoenix Theatre</span><b>5 min</b></li><li><span>Palace Theatre</span><b>7 min</b></li><li><span>Royal Opera House</span><b>6 min</b></li><li><span>Theatre Royal Drury Lane</span><b>8 min</b></li><li><span>Novello Theatre</span><b>9 min</b></li><li><span>Lyceum Theatre</span><b>10 min</b></li><li><span>Savoy Theatre</span><b>11 min</b></li><li><span>London Coliseum (ENO)</span><b>10 min</b></li></ul>
+          <ul class="theatre-list"><li><span>Shaftesbury Theatre</span><b>2 min</b></li><li><span>Cambridge Theatre</span><b>3 min</b></li><li><span>Phoenix Theatre</span><b>5 min</b></li><li><span>Palace Theatre</span><b>6 min</b></li><li><span>Royal Opera House</span><b>6 min</b></li><li><span>Theatre Royal Drury Lane</span><b>8 min</b></li><li><span>Novello Theatre</span><b>9 min</b></li><li><span>Lyceum Theatre</span><b>10 min</b></li><li><span>Savoy Theatre</span><b>11 min</b></li><li><span>London Coliseum (ENO)</span><b>10 min</b></li></ul>
         </div>
       </div>
     </section>
@@ -427,7 +390,7 @@
           <div>
             <h3>Find us</h3>
             <address>63 Endell Street<br>Covent Garden, London<br>WC2H 9AJ</address>
-            <p class="small-print">Covent Garden 5 min · Tottenham Court Road 7 min · Holborn 8 min</p>
+            <p class="small-print">Covent Garden 5 min · Tottenham Court Road 8 min · Holborn 8 min</p>
             <div class="visit-links">
               <a href="tel:+442072403632"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg>020 7240 3632</a>
               <a href="https://www.google.co.uk/maps/place/Da+Mario+Covent+Garden/@51.5150558,-0.1268186,18z/data=!3m1!4b1!4m5!3m4!1s0x48761b332d1f8807:0xe8155715f0aac02c!8m2!3d51.5150558!4d-0.1256986" target="_blank" rel="noopener"><svg class="icon" aria-hidden="true"><use href="#i-pin"/></svg>Directions on Google Maps</a>
@@ -497,6 +460,6 @@
     <a class="btn btn-gold" href="book.html">Book a table</a>
   </div>
 
-  <script src="main.js?v=1" defer></script>
+  <script src="main.js?v=2" defer></script>
 </body>
 </html>
