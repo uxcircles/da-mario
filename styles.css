@@ -58,7 +58,10 @@ body {
   overflow-x: clip;
 }
 /* grid items default to min-width: auto, so a wide child (a select, the map canvas) can stretch the column past the screen */
-:is(.hero-grid, .planner-grid, .planner-form, .story-grid, .cantina-grid, .visit-grid, .book-grid, .book-card, .menu-section, .footer-grid, .offers, .offer) > * { min-width: 0; }
+:is(.hero-grid, .planner-grid, .planner-form, .story-grid, .cantina-grid, .cantina-media, .dish-grid, .visit-grid, .book-grid, .book-card, .menu-section, .footer-grid, .offers, .offer) > * { min-width: 0; }
+/* Safari sizes a framed photo by its own pixel width inside grids; keep frames and photos inside their column */
+.frame { min-width: 0; max-width: 100%; }
+.frame img { min-width: 0; }
 img { display: block; max-width: 100%; height: auto; }
 a { color: inherit; }
 p { margin: 0 0 1em; }
