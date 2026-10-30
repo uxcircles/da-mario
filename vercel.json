@@ -1,0 +1,15 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/default.aspx", "destination": "/", "permanent": true },
+    { "source": "/menus.aspx", "destination": "/menu", "permanent": true },
+    { "source": "/location.aspx", "destination": "/#theatre", "permanent": true },
+    { "source": "/local.aspx", "destination": "/#theatre", "permanent": true },
+    { "source": "/reviews.aspx", "destination": "/#reviews", "permanent": true },
+    { "source": "/gallery.aspx", "destination": "/#gallery", "permanent": true }
+  ],
+  "headers": [
+    { "source": "/assets/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=2592000" }] }
+  ]
+}

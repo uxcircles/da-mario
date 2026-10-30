@@ -1,0 +1,7 @@
+# Netlify / Cloudflare Pages: keep the old ASP.NET URLs working (Google results, bookmarks, Tripadvisor links…)
+/default.aspx    /              301
+/menus.aspx      /menu.html     301
+/location.aspx   /#theatre      301
+/local.aspx      /#theatre      301
+/reviews.aspx    /#reviews      301
+/gallery.aspx    /#gallery      301
