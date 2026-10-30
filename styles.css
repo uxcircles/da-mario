@@ -132,6 +132,20 @@ button { font: inherit; color: inherit; }
 .site-header { position: sticky; top: 0; z-index: 50; }
 .header-bar { background: rgba(247, 242, 232, .94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid transparent; transition: border-color .3s; }
 .is-scrolled .header-bar { border-bottom-color: var(--line); }
+/* Home page: the header starts as the stage pelmet (same red as the valance and curtains), turns to linen on scroll */
+.has-stage .header-bar { transition: background-color .4s var(--ease), border-color .3s; }
+.has-stage .header-bar :is(.brand-name, .brand-sub, .nav-list a, .lang-switch, .call-link, .btn) { transition: color .4s var(--ease), background-color .4s var(--ease); }
+.has-stage .burger span { transition: transform .3s var(--ease), top .3s var(--ease), background-color .4s var(--ease); }
+.has-stage:not(.is-scrolled):not(.nav-open) .header-bar { background: #7d1f1a; -webkit-backdrop-filter: none; backdrop-filter: none; }
+.has-stage:not(.is-scrolled):not(.nav-open) .header-bar :is(.brand-name, .nav-list a, .call-link) { color: #fff8ee; }
+.has-stage:not(.is-scrolled):not(.nav-open) .header-bar .brand-name b { color: var(--gold-bright); }
+.has-stage:not(.is-scrolled):not(.nav-open) .header-bar :is(.brand-sub, .lang-switch) { color: rgba(255, 248, 238, .72); }
+.has-stage:not(.is-scrolled):not(.nav-open) .header-bar .lang-switch:hover { color: #fff8ee; }
+.has-stage:not(.is-scrolled):not(.nav-open) .header-bar .nav-list a::after { background: var(--gold-bright); }
+.has-stage:not(.is-scrolled):not(.nav-open) .header-bar .btn-rosso { background: var(--gold-bright); color: var(--ink); }
+.has-stage:not(.is-scrolled):not(.nav-open) .header-bar .btn-rosso:hover { background: #e4c88e; }
+.has-stage:not(.is-scrolled):not(.nav-open) .header-bar .burger span { background: #fff8ee; }
+.has-stage:not(.is-scrolled):not(.nav-open) .header-bar :focus-visible { outline-color: var(--gold-bright); }
 .header-inner { display: flex; align-items: center; gap: 28px; min-height: var(--header-h); }
 .brand { display: inline-flex; flex-direction: column; align-items: flex-start; text-decoration: none; line-height: 1; margin-right: auto; }
 .brand-name { font: 400 1.6rem/1 var(--f-label); letter-spacing: .14em; color: var(--ink); }
