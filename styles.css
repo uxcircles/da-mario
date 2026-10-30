@@ -305,7 +305,7 @@ button { font: inherit; color: inherit; }
 .planner-rules { display: grid; gap: 10px; margin-top: 26px; font-size: .95rem; color: var(--ink-soft); }
 
 /* Theatreland map (MapLibre, assets/map.js) */
-.map-card { position: relative; background: var(--paper); border: 1px solid var(--line); }
+.map-card { position: relative; isolation: isolate; z-index: 0; background: var(--paper); border: 1px solid var(--line); } /* keeps MapLibre's overlays (z-index 99999) below the sticky header */
 /* .map-card prefix: maplibre-gl.css loads later and sets the container to position: relative */
 .map-card .map-canvas { position: relative; height: clamp(380px, 46vw, 560px); background: var(--linen-2); font: inherit; }
 .map-canvas.is-failed::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(45deg, transparent 0 12px, rgba(26, 34, 41, .04) 12px 13px); }
