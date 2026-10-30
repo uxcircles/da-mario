@@ -13,7 +13,7 @@ index.html            首頁（看戲前用餐規劃、劇院步行地圖、招�
 menu.html             完整菜單與酒單（HTML 版，可搜尋、可只看素食、分類分頁籤）
 book.html             訂位頁（連到店家現有的 Dojo 訂位系統，並列出訂金與用餐規定）
 zh/                   繁體中文版（index / menu / book）
-it/                   義大利文版（index / menu / book）；右上角可在 EN／IT／中文 之間切換，手機版在選單裡
+it/                   義大利文版（index / menu / book）；右上角的語言下拉選單可切換 English／Italiano／中文，手機版在選單裡
 styles.css            全站樣式（顏色、字體都在最上面的 :root 變數）
 main.js               互動：手機選單、營業中狀態、看戲前規劃、相簿燈箱、菜單搜尋、捲動淡入
 assets/map.js         地圖樣式與標記（顏色都在檔案最上面的 C 物件）
@@ -94,4 +94,4 @@ python3 -m http.server 5173
 | 劇院 | 首頁 `#theatre` 區塊的下拉選單、列表和 `#map-data` JSON（三種語言的頁面都要改） |
 | 其他文字 | 英文、義大利文、中文頁面是各自獨立的 HTML，改一邊記得三個都要改 |
 | 照片 | 放進 `assets/img/`，建議做成 WebP |
-| 改了 CSS／JS | 把六個頁面 `styles.css?v=6`、`main.js?v=4` 的版本號 +1，避免訪客看到快取的舊版 |
+| 改了 CSS／JS | 把六個頁面 `styles.css?v=7`、`main.js?v=5` 的版本號 +1，避免訪客看到快取的舊版 |

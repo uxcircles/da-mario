@@ -28,7 +28,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400..500&family=Jost:wght@400;500&family=Tenor+Sans&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../styles.css?v=6">
+  <link rel="stylesheet" href="../styles.css?v=7">
   <script>document.documentElement.classList.replace('no-js','js')</script>
 </head><body>
   <svg aria-hidden="true" focusable="false" style="position:absolute;width:0;height:0;overflow:hidden">
@@ -40,6 +40,8 @@
     <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-12a7 7 0 0 1 14 0c0 5.8-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/></symbol>
     <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
     <symbol id="i-gift" viewBox="0 0 24 24"><path d="M4 11h16v9H4zM3 7h18v4H3zM12 7v13M12 7S10 3 7.5 4 8 7 12 7zm0 0s2-4 4.5-3S16 7 12 7z"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.6 3.8 5.6 3.8 9s-1.3 6.4-3.8 9c-2.5-2.6-3.8-5.6-3.8-9S9.5 5.6 12 3z"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path d="m6 9 6 6 6-6"/></symbol>
     <symbol id="i-ig" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><path d="M17.5 6.5h.01"/></symbol>
   </svg>
   <a class="skip" href="#main">Vai al contenuto</a>
@@ -64,11 +66,14 @@
           <div class="nav-extra">
             <a class="btn btn-rosso" href="book.html">Prenota un tavolo</a>
             <p>63 Endell Street, London WC2H 9AJ<br><a href="tel:+442072403632">020 7240 3632</a></p>
-            <p><a class="nav-lang" href="../menu.html" lang="en-GB" hreflang="en-GB">English</a> · <a class="nav-lang" href="../zh/menu.html" lang="zh-Hant" hreflang="zh-Hant">中文版</a></p>
+            <p><a class="nav-lang" href="../menu.html" lang="en-GB" hreflang="en-GB">English</a> · <a class="nav-lang" href="../zh/menu.html" lang="zh-Hant" hreflang="zh-Hant">中文</a></p>
           </div>
         </nav>
         <div class="header-actions">
-          <a class="lang-switch" href="../menu.html" lang="en-GB" hreflang="en-GB" aria-label="English">EN</a><a class="lang-switch" href="../zh/menu.html" lang="zh-Hant" hreflang="zh-Hant" aria-label="中文版">中文</a>
+          <div class="lang" data-lang>
+            <button class="lang-btn" type="button" aria-expanded="false" aria-controls="lang-menu" aria-label="Lingua: Italiano"><svg class="icon" aria-hidden="true"><use href="#i-globe"/></svg>IT<svg class="icon chev" aria-hidden="true"><use href="#i-chev"/></svg></button>
+            <ul class="lang-menu" id="lang-menu" hidden><li><a href="../menu.html" lang="en-GB" hreflang="en-GB"><span>English</span><b>EN</b></a></li><li><a href="../it/menu.html" lang="it" hreflang="it" aria-current="true"><span>Italiano</span><b>IT</b></a></li><li><a href="../zh/menu.html" lang="zh-Hant" hreflang="zh-Hant"><span>中文</span><b>中文</b></a></li></ul>
+          </div>
           <a class="call-link" href="tel:+442072403632" aria-label="Chiama Da Mario al 020 7240 3632"><svg class="icon" aria-hidden="true"><use href="#i-phone"/></svg><span>020 7240 3632</span></a>
           <a class="btn btn-rosso btn-sm" href="book.html">Prenota un tavolo</a>
           <button class="burger" type="button" aria-label="Apri il menù" aria-expanded="false" aria-controls="site-nav" data-burger><span></span><span></span></button>
@@ -204,6 +209,6 @@
     <a class="btn btn-gold" href="book.html">Prenota un tavolo</a>
   </div>
 
-  <script src="../main.js?v=4" defer></script>
+  <script src="../main.js?v=5" defer></script>
 </body>
 </html>

@@ -33,6 +33,17 @@
     if (e.key === 'Escape' && document.body.classList.contains('nav-open')) { document.body.classList.remove('nav-open'); burger?.setAttribute('aria-expanded', 'false'); burger?.focus(); }
   });
 
+  /* Language dropdown */
+  const lang = $('[data-lang]');
+  if (lang) {
+    const btn = $('.lang-btn', lang), menu = $('.lang-menu', lang);
+    const setOpen = (open) => { btn.setAttribute('aria-expanded', open); menu.hidden = !open; };
+    btn.addEventListener('click', () => setOpen(menu.hidden));
+    document.addEventListener('click', (e) => { if (!lang.contains(e.target)) setOpen(false); });
+    lang.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !menu.hidden) { setOpen(false); btn.focus(); } });
+    lang.addEventListener('focusout', (e) => { if (!lang.contains(e.relatedTarget)) setOpen(false); });
+  }
+
   const mobileCta = $('[data-mobile-cta]');
   const onScroll = () => {
     document.body.classList.toggle('is-scrolled', scrollY > 8);
