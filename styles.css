@@ -135,7 +135,7 @@ button { font: inherit; color: inherit; }
 }
 
 /* Header ------------------------------------------------------------------ */
-.site-header { position: sticky; top: 0; z-index: 50; }
+.site-header { position: sticky; top: calc(-1 * var(--concept-h, 34px)); z-index: 50; } /* the concept bar scrolls away, the header stays */
 /* solid, no backdrop-filter: a filter here would become the containing block of the fixed mobile nav and collapse it */
 .header-bar { background: var(--linen); border-bottom: 1px solid transparent; transition: border-color .3s; }
 .is-scrolled .header-bar { border-bottom-color: var(--line); }
@@ -504,7 +504,7 @@ button { font: inherit; color: inherit; }
    ========================================================================== */
 .page-hero { padding: clamp(48px, 7vw, 96px) 0 clamp(36px, 5vw, 60px); border-bottom: 1px solid var(--line); }
 .page-hero .lede { margin-top: 18px; }
-.menu-toolbar { position: sticky; top: calc(var(--header-h) + var(--concept-h, 34px)); z-index: 30; background: rgba(247, 242, 232, .96); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+.menu-toolbar { position: sticky; top: var(--header-h); z-index: 30; background: rgba(247, 242, 232, .96); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
 .menu-toolbar-inner { display: flex; align-items: center; gap: 18px; min-height: 64px; }
 .menu-tabs { display: flex; gap: 4px; overflow-x: auto; scrollbar-width: none; margin-right: auto; -webkit-mask: linear-gradient(90deg, #000 90%, transparent); mask: linear-gradient(90deg, #000 90%, transparent); padding-right: 30px; }
 .menu-tabs::-webkit-scrollbar { display: none; }
