@@ -253,6 +253,24 @@ button { font: inherit; color: inherit; }
 .hero::before { left: 0; border-bottom-right-radius: 100% 22%; }
 .hero::after { right: 0; border-bottom-left-radius: 100% 22%; }
 @media (max-width: 760px) { .hero::before, .hero::after { display: none; } .hero { border-bottom: 10px solid var(--rosso); } }
+/* keep the hero copy clear of the side drapes */
+@media (min-width: 761px) { .hero .wrap { width: min(100% - 2 * (clamp(28px, 6vw, 96px) + 20px), var(--wrap)); } }
+/* curtain-up: the stage curtains start closed and draw open once on load (CSS only, no click) */
+.hero-valance { z-index: 4; }
+.curtain {
+  position: absolute; top: 0; bottom: 0; width: 51%; z-index: 3; pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0) 70%, rgba(0,0,0,.35)),
+    repeating-linear-gradient(90deg, rgba(0,0,0,.32) 0 3px, transparent 3px 30px, rgba(255,255,255,.08) 30px 36px, transparent 36px 62px),
+    linear-gradient(180deg, #8a231d, #4c100d);
+  box-shadow: 0 0 40px rgba(0,0,0,.35);
+  will-change: transform;
+}
+.curtain-l { left: 0; transform-origin: left center; animation: curtain-open-l 1.5s .35s cubic-bezier(.65, 0, .25, 1) both; }
+.curtain-r { right: 0; transform-origin: right center; animation: curtain-open-r 1.5s .35s cubic-bezier(.65, 0, .25, 1) both; }
+@keyframes curtain-open-l { from { transform: none; } 70% { visibility: visible; } to { transform: translateX(-100%) scaleX(.55); visibility: hidden; } }
+@keyframes curtain-open-r { from { transform: none; } 70% { visibility: visible; } to { transform: translateX(100%) scaleX(.55); visibility: hidden; } }
+@media (prefers-reduced-motion: reduce) { .curtain { display: none; } }
 .hero-valance {
   position: absolute; left: 0; right: 0; top: 0; height: 18px; z-index: -1;
   background: radial-gradient(circle at 20px -6px, #7d1f1a 20px, transparent 21px) 0 0 / 40px 18px repeat-x;
